@@ -1,0 +1,9 @@
+.idea/
+*.uvguix
+DebugConfig/
+Debug_RAM.ini
+EventRecorderStub.scvd
+Listings/
+Objects/
+cmake-build-debug/
+*.Evan
