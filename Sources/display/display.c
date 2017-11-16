@@ -171,6 +171,7 @@ int sendValuesToDisplay(int panelToDisplay){
 }
 
 int displayDigits(float value){
+	char output[4];
     static int counter = 0;
     if (counter < 10){
         counter = 0;
@@ -179,7 +180,6 @@ int displayDigits(float value){
         return 0;
     }
 	//First thing is to load the values for RMS VOLTAGE into the display values
-	char output[4];
 	snprintf(output, 50, "%f", value);
 	int location = 0;
 	int index = 0;
