@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "stm32f4xx_hal.h"
-#include "gpio.h"
-#include "../state_machine.h"
+#include "../Gpio/gpio.h"
+#include "../StateMachine/state_machine.h"
 #include "keypad.h"
 #include "../stm32f4xx_it.h"
 
@@ -119,6 +119,7 @@ int getPressedKey(int column, int row){
 
 
 int readInput(void){
+	int keypad_counter = 0;
 	int a = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4);
 	int b = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_5);
 	int c = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
@@ -132,15 +133,12 @@ int readInput(void){
 			column = 3;
 		}
 
-		
 		switchIO();
 		
 		int d = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12);
 		int e = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13);
 		int f = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14);
 		int g = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15);
-
-	
 		
 		if(d == 0){
 			row = 1;

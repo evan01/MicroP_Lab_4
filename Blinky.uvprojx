@@ -399,15 +399,25 @@
               <FileType>1</FileType>
               <FilePath>.\Sources\fput_debug.c</FilePath>
             </File>
+            <File>
+              <FileName>mxconstants.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\mxconstants.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Accelerometer</GroupName>
           <Files>
             <File>
+              <FileName>LIS3DSH.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\accelerometer\LIS3DSH.h</FilePath>
+            </File>
+            <File>
               <FileName>LIS3DSH.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Accelerometer\src\LIS3DSH.c</FilePath>
+              <FilePath>.\Sources\accelerometer\LIS3DSH.c</FilePath>
             </File>
             <File>
               <FileName>accelerometer.c</FileName>
@@ -849,7 +859,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER, STM32F407xx ,  __FPU_PRESENT=1 , HSE_VALUE=8000000, ARM_MATH_CM4</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Headers;.\Accelerometer\inc</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Include;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Sources/Accelerometer</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -913,15 +923,25 @@
               <FileType>1</FileType>
               <FilePath>.\Sources\fput_debug.c</FilePath>
             </File>
+            <File>
+              <FileName>mxconstants.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\mxconstants.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Accelerometer</GroupName>
           <Files>
             <File>
+              <FileName>LIS3DSH.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\accelerometer\LIS3DSH.h</FilePath>
+            </File>
+            <File>
               <FileName>LIS3DSH.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Accelerometer\src\LIS3DSH.c</FilePath>
+              <FilePath>.\Sources\accelerometer\LIS3DSH.c</FilePath>
             </File>
             <File>
               <FileName>accelerometer.c</FileName>
@@ -1426,15 +1446,25 @@
               <FileType>1</FileType>
               <FilePath>.\Sources\fput_debug.c</FilePath>
             </File>
+            <File>
+              <FileName>mxconstants.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\mxconstants.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Accelerometer</GroupName>
           <Files>
             <File>
+              <FileName>LIS3DSH.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\accelerometer\LIS3DSH.h</FilePath>
+            </File>
+            <File>
               <FileName>LIS3DSH.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Accelerometer\src\LIS3DSH.c</FilePath>
+              <FilePath>.\Sources\accelerometer\LIS3DSH.c</FilePath>
             </File>
             <File>
               <FileName>accelerometer.c</FileName>
@@ -1553,7 +1583,17 @@
       <filter>
         <targetInfos/>
       </filter>
+      <package license="License/license.txt" name="CMSIS-FreeRTOS" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="ARM" version="9.1.0">
+        <targetInfos>
+          <targetInfo name="Lab4"/>
+        </targetInfos>
+      </package>
       <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.1.1">
+        <targetInfos>
+          <targetInfo name="Lab4"/>
+        </targetInfos>
+      </package>
+      <package name="ARM_Compiler" schemaVersion="1.4.9" url="http://www.keil.com/pack/" vendor="Keil" version="1.3.1">
         <targetInfos>
           <targetInfo name="Lab4"/>
         </targetInfos>
@@ -1737,32 +1777,6 @@
           <targetInfo name="STM32F407 RAM"/>
         </targetInfos>
       </component>
-      <component Cclass="Device" Cgroup="STM32Cube HAL" Csub="UART" Cvendor="Keil" Cversion="1.4.2" condition="STM32F4 HAL DMA">
-        <package name="STM32F4xx_DFP" schemaVersion="1.3" url="http://www.keil.com/pack" vendor="Keil" version="2.7.0"/>
-        <targetInfos>
-          <targetInfo name="Lab4"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="STM32Cube HAL" Csub="UART" Cvendor="Keil" Cversion="1.6.0" condition="STM32F4 HAL DMA">
-        <package name="STM32F4xx_DFP" schemaVersion="1.3" url="http://www.keil.com/pack" vendor="Keil" version="2.11.0"/>
-        <targetInfos>
-          <targetInfo name="STM32F407 OPT"/>
-          <targetInfo name="STM32F407 RAM"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="STM32Cube HAL" Csub="USART" Cvendor="Keil" Cversion="1.4.2" condition="STM32F4 HAL DMA RCC">
-        <package name="STM32F4xx_DFP" schemaVersion="1.3" url="http://www.keil.com/pack" vendor="Keil" version="2.7.0"/>
-        <targetInfos>
-          <targetInfo name="Lab4"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Device" Cgroup="STM32Cube HAL" Csub="USART" Cvendor="Keil" Cversion="1.6.0" condition="STM32F4 HAL DMA RCC">
-        <package name="STM32F4xx_DFP" schemaVersion="1.3" url="http://www.keil.com/pack" vendor="Keil" version="2.11.0"/>
-        <targetInfos>
-          <targetInfo name="STM32F407 OPT"/>
-          <targetInfo name="STM32F407 RAM"/>
-        </targetInfos>
-      </component>
       <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="2.4.2" condition="STM32F4 CMSIS">
         <package name="STM32F4xx_DFP" schemaVersion="1.3" url="http://www.keil.com/pack" vendor="Keil" version="2.7.0"/>
         <targetInfos>
@@ -1827,6 +1841,12 @@
           <targetInfo name="STM32F407 OPT"/>
           <targetInfo name="STM32F407 RAM"/>
         </targetInfos>
+      </file>
+      <file attr="config" category="header" condition="CoreM" name="Config\ARMCM\FreeRTOSConfig.h" version="9.0.0">
+        <instance index="0" removed="1">RTE\RTOS\FreeRTOSConfig.h</instance>
+        <component Cbundle="FreeRTOS" Cclass="RTOS" Cgroup="Config" Cvariant="FreeRTOS" Cvendor="ARM" Cversion="9.0.0" condition="FreeRTOS Core"/>
+        <package license="License/license.txt" name="CMSIS-FreeRTOS" schemaVersion="1.4" url="http://www.keil.com/pack/" vendor="ARM" version="9.1.0"/>
+        <targetInfos/>
       </file>
     </files>
   </RTE>

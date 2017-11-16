@@ -7,7 +7,7 @@
 	* Date							 : January 14th, 2016
   ******************************************************************************
   */
-#include "supporting_functions.h"
+
 
 /**
    * @brief A function used to relay information (PRINTF) that a specific error has occured 
@@ -25,28 +25,28 @@
 	 //your codes
 	 
 	 
-void Error_Handler			(uint16_t error_code){
-	//User error handling code, could use printf to relay information to user
-	switch (error_code){	
-		case RCC_CONFIG_FAIL: 
-			printf("ERROR: Error in initialising System Clocks \n");
-			break;
-		case TIM_INIT_FAIL: 
-			printf("ERROR: Error in initialising Timer base \n");
-			break;
-		case ADC_INIT_FAIL: 
-			printf("ERROR: Error in initialising ADC \n");
-			break;
-		case ADC_CH_CONFIG_FAIL: 
-			printf("ERROR: Error in initialising ADC Channel Configuration \n");
-			break;
-		case ADC_MULTIMODE_FAIL: 
-			printf("ERROR: Error in initialising ADC Multimode\\DMA \n");
-			break;
-		case EXTI_SPI1_FAIL: 
-			printf("ERROR: Error in initialising SPI1 \n");
-			break;
-		default: printf ("ERROR: AN ERROR OCCURED \n");
-		break;
-	}
-}
+//void Error_Handler			(uint16_t error_code){
+//	//User error handling code, could use printf to relay information to user
+//	switch (error_code){	
+//		case RCC_CONFIG_FAIL: 
+//			printf("ERROR: Error in initialising System Clocks \n");
+//			break;
+//		case TIM_INIT_FAIL: 
+//			printf("ERROR: Error in initialising Timer base \n");
+//			break;
+//		case ADC_INIT_FAIL: 
+//			printf("ERROR: Error in initialising ADC \n");
+//			break;
+//		case ADC_CH_CONFIG_FAIL: 
+//			printf("ERROR: Error in initialising ADC Channel Configuration \n");
+//			break;
+//		case ADC_MULTIMODE_FAIL: 
+//			printf("ERROR: Error in initialising ADC Multimode\\DMA \n");
+//			break;
+//		case EXTI_SPI1_FAIL: 
+//			printf("ERROR: Error in initialising SPI1 \n");
+//			break;
+//		default: printf ("ERROR: AN ERROR OCCURED \n");
+//		break;
+//	}
+//}
