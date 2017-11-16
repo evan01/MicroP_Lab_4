@@ -1,2 +1,2 @@
-int displayDigits(float value);
+int displayDigits(int value);
 int resetDisplay(void);

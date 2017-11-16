@@ -13,7 +13,6 @@ int keypressed = 0;
 int key = 0;
 int keypad_counter = 0;
 
-
 void switchIO(){
 	GPIO_InitTypeDef GPIO_InitStruct;
 	
@@ -118,10 +117,9 @@ int getPressedKey(int column, int row){
 	return -1;
 }
 
-
 int readInput(void){
 	static int timer_start = 0;
-		static int timer_end = 0;
+	static int timer_end = 0;
 
 	int a = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4);
 	int b = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_5);
@@ -144,8 +142,6 @@ int readInput(void){
 		int f = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14);
 		int g = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15);
 
-	
-		
 		if(d == 0){
 			row = 1;
 		}else if(e == 0){
