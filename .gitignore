@@ -1,5 +1,4 @@
 .idea/
-*.uvguix
 DebugConfig/
 Debug_RAM.ini
 EventRecorderStub.scvd

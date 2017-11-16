@@ -107,20 +107,20 @@ int infiniteLoop() {
 	void Thread_Display (void const *argument) {
 		int counter =0;
 		while(1){
-				osDelay(1000);
-				if(counter == 1){
-					setLedIntensityPitch(0);
-					setLedIntensityRoll(200);
-					counter = 0;
-					printf("toggling to 0");
-				}else{
-					setLedIntensityPitch(200);
-					setLedIntensityRoll(0);	
-					counter= 1;
-					printf("toggling to 1");
+//				osDelay(1000);
+//				if(counter == 1){
+//					setLedIntensityPitch(0);
+//					setLedIntensityRoll(200);
+//					counter = 0;
+//					printf("toggling to 0");
+//				}else{
+//					setLedIntensityPitch(200);
+//					setLedIntensityRoll(0);	
+//					counter= 1;
+//					printf("toggling to 1");
 
-				}
-//				infiniteLoop();
+//				}
+				infiniteLoop();
 				printf("%d\n", HAL_GetTick());
 			
 			
