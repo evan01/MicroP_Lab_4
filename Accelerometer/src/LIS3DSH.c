@@ -40,7 +40,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "lis3dsh.h"
+#include "LIS3DSH.h"
 
 /** @addtogroup Utilities
   * @{

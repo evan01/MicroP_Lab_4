@@ -395,6 +395,21 @@
               <FilePath>.\Sources\supporting_functions.c</FilePath>
             </File>
             <File>
+              <FileName>fput_debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sources\fput_debug.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Accelerometer</GroupName>
+          <Files>
+            <File>
+              <FileName>LIS3DSH.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Accelerometer\src\LIS3DSH.c</FilePath>
+            </File>
+            <File>
               <FileName>accelerometer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Sources\accelerometer\accelerometer.c</FilePath>
@@ -404,16 +419,26 @@
               <FileType>5</FileType>
               <FilePath>.\Sources\accelerometer\accelerometer.h</FilePath>
             </File>
-            <File>
-              <FileName>display.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Sources\display\display.h</FilePath>
-            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Display</GroupName>
+          <Files>
             <File>
               <FileName>display.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Sources\display\display.c</FilePath>
             </File>
+            <File>
+              <FileName>display.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\display\display.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Filter</GroupName>
+          <Files>
             <File>
               <FileName>filter.c</FileName>
               <FileType>1</FileType>
@@ -424,16 +449,26 @@
               <FileType>5</FileType>
               <FilePath>.\Sources\filter\filter.h</FilePath>
             </File>
-            <File>
-              <FileName>keypad.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Sources\keypad\keypad.h</FilePath>
-            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Keypad</GroupName>
+          <Files>
             <File>
               <FileName>keypad.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Sources\keypad\keypad.c</FilePath>
             </File>
+            <File>
+              <FileName>keypad.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\keypad\keypad.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>StateMachine</GroupName>
+          <Files>
             <File>
               <FileName>state_machine.c</FileName>
               <FileType>1</FileType>
@@ -447,12 +482,32 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Accelerometer</GroupName>
+          <GroupName>Tim</GroupName>
           <Files>
             <File>
-              <FileName>LIS3DSH.c</FileName>
+              <FileName>tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Accelerometer\src\LIS3DSH.c</FilePath>
+              <FilePath>.\Sources\tim\tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>tim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\tim\tim.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Gpio</GroupName>
+          <Files>
+            <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sources\gpio\gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\gpio\gpio.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -769,10 +824,10 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
-            <oTime>0</oTime>
+            <Optim>4</Optim>
+            <oTime>1</oTime>
             <SplitLS>0</SplitLS>
-            <OneElfS>0</OneElfS>
+            <OneElfS>1</OneElfS>
             <Strict>0</Strict>
             <EnumInt>0</EnumInt>
             <PlainCh>0</PlainCh>
@@ -781,7 +836,7 @@
             <wLevel>0</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
             <v6Lang>0</v6Lang>
             <v6LangP>0</v6LangP>
@@ -854,6 +909,21 @@
               <FilePath>.\Sources\supporting_functions.c</FilePath>
             </File>
             <File>
+              <FileName>fput_debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sources\fput_debug.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Accelerometer</GroupName>
+          <Files>
+            <File>
+              <FileName>LIS3DSH.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Accelerometer\src\LIS3DSH.c</FilePath>
+            </File>
+            <File>
               <FileName>accelerometer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Sources\accelerometer\accelerometer.c</FilePath>
@@ -863,16 +933,26 @@
               <FileType>5</FileType>
               <FilePath>.\Sources\accelerometer\accelerometer.h</FilePath>
             </File>
-            <File>
-              <FileName>display.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Sources\display\display.h</FilePath>
-            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Display</GroupName>
+          <Files>
             <File>
               <FileName>display.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Sources\display\display.c</FilePath>
             </File>
+            <File>
+              <FileName>display.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\display\display.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Filter</GroupName>
+          <Files>
             <File>
               <FileName>filter.c</FileName>
               <FileType>1</FileType>
@@ -883,16 +963,26 @@
               <FileType>5</FileType>
               <FilePath>.\Sources\filter\filter.h</FilePath>
             </File>
-            <File>
-              <FileName>keypad.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Sources\keypad\keypad.h</FilePath>
-            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Keypad</GroupName>
+          <Files>
             <File>
               <FileName>keypad.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Sources\keypad\keypad.c</FilePath>
             </File>
+            <File>
+              <FileName>keypad.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\keypad\keypad.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>StateMachine</GroupName>
+          <Files>
             <File>
               <FileName>state_machine.c</FileName>
               <FileType>1</FileType>
@@ -906,12 +996,32 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Accelerometer</GroupName>
+          <GroupName>Tim</GroupName>
           <Files>
             <File>
-              <FileName>LIS3DSH.c</FileName>
+              <FileName>tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Accelerometer\src\LIS3DSH.c</FilePath>
+              <FilePath>.\Sources\tim\tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>tim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\tim\tim.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Gpio</GroupName>
+          <Files>
+            <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sources\gpio\gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\gpio\gpio.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1312,6 +1422,21 @@
               <FilePath>.\Sources\supporting_functions.c</FilePath>
             </File>
             <File>
+              <FileName>fput_debug.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sources\fput_debug.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Accelerometer</GroupName>
+          <Files>
+            <File>
+              <FileName>LIS3DSH.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Accelerometer\src\LIS3DSH.c</FilePath>
+            </File>
+            <File>
               <FileName>accelerometer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Sources\accelerometer\accelerometer.c</FilePath>
@@ -1321,16 +1446,26 @@
               <FileType>5</FileType>
               <FilePath>.\Sources\accelerometer\accelerometer.h</FilePath>
             </File>
-            <File>
-              <FileName>display.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Sources\display\display.h</FilePath>
-            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Display</GroupName>
+          <Files>
             <File>
               <FileName>display.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Sources\display\display.c</FilePath>
             </File>
+            <File>
+              <FileName>display.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\display\display.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Filter</GroupName>
+          <Files>
             <File>
               <FileName>filter.c</FileName>
               <FileType>1</FileType>
@@ -1341,16 +1476,26 @@
               <FileType>5</FileType>
               <FilePath>.\Sources\filter\filter.h</FilePath>
             </File>
-            <File>
-              <FileName>keypad.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Sources\keypad\keypad.h</FilePath>
-            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Keypad</GroupName>
+          <Files>
             <File>
               <FileName>keypad.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Sources\keypad\keypad.c</FilePath>
             </File>
+            <File>
+              <FileName>keypad.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\keypad\keypad.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>StateMachine</GroupName>
+          <Files>
             <File>
               <FileName>state_machine.c</FileName>
               <FileType>1</FileType>
@@ -1364,12 +1509,32 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Accelerometer</GroupName>
+          <GroupName>Tim</GroupName>
           <Files>
             <File>
-              <FileName>LIS3DSH.c</FileName>
+              <FileName>tim.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Accelerometer\src\LIS3DSH.c</FilePath>
+              <FilePath>.\Sources\tim\tim.c</FilePath>
+            </File>
+            <File>
+              <FileName>tim.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\tim\tim.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Gpio</GroupName>
+          <Files>
+            <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sources\gpio\gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>gpio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\gpio\gpio.h</FilePath>
             </File>
           </Files>
         </Group>

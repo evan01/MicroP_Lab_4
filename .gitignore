@@ -7,3 +7,4 @@ Listings/
 Objects/
 cmake-build-debug/
 *.Evan
+/CMakeLists.txt

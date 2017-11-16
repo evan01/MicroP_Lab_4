@@ -3,7 +3,7 @@
 #include "gpio.h"
 #include "../state_machine.h"
 #include "keypad.h"
-#include "stm32f4xx_it.h"
+#include "../stm32f4xx_it.h"
 
 int columns[3] = {0,0,0};
 int rows[4] = {0,0,0,0};
