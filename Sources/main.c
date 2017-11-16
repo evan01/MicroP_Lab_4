@@ -100,7 +100,7 @@ int main (void) {
   HAL_Init();                               /* Initialize the HAL Library     */
 
   SystemClock_Config();                     /* Configure the System Clock     */
-
+	MX_GPIO_Init();
 	/* User codes goes here*/
 //	initializeLED_IO();
 //  start_Threads();                       /* Create LED thread              */
