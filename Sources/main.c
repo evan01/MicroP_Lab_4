@@ -27,7 +27,9 @@
 //The thread code is written in Thread_LED.c, just telling the toolchain that the 
 //functions are declared externally
 extern void initializeLED_IO			(void);
+extern void start_Threads			(void);
 extern void start_Thread_LED			(void);
+
 extern void Thread_LED(void const *argument);
 extern osThreadId tid_Thread_LED;
 void SystemClock_Config(void);
@@ -42,49 +44,49 @@ uint32_t HAL_GetTick(void) {
   return os_time; 
 }
 #endif
-uint32_t judgeDuty(uint32_t target, float current) {
-    float rval;
-    rval = 200.0 * ((fabsf((float) target - (float) current)) / 180.0);
-    return (uint32_t) rval;
+//uint32_t judgeDuty(uint32_t target, float current) {
+//    float rval;
+//    rval = 200.0 * ((fabsf((float) target - (float) current)) / 180.0);
+//    return (uint32_t) rval;
 
-}
+//}
 
-int display(int value) {
-    //display the digits
-    if (value == 1) {
-        return displayDigits(pitch);
-    } else if (value == 0) {
-        return displayDigits(roll);
-    } else {
-        //In sleep state
-        return displayDigits(value);
-    }
-}
+//int display(int value) {
+//    //display the digits
+//    if (value == 1) {
+//        return displayDigits(pitch);
+//    } else if (value == 0) {
+//        return displayDigits(roll);
+//    } else {
+//        //In sleep state
+//        return displayDigits(value);
+//    }
+//}
 
-int infiniteLoop() {
-    //Main program execution ins here.
-    if (state == PITCH_MONITOR_STATE) {
-        display(1);
-    } else if (state == ROLL_MONITOR_STATE) {
-        display(0);
-    } else if (state == START_STATE) {
-        display(8888);
-    } else if (state == SLEEP_STATE) {
-        resetDisplay();
-    } else if (state == ENTER_ROLL_STATE) {
-        float f=0.0;
-        sscanf(roll_buf, "%f", &f);
-        display((int) f);
-    } else if (state == ENTER_PITCH_STATE) {
-        float f=0.0;
-        sscanf(pitch_buf, "%f", &f);
-        display((int) f);
-    }
-		uint32_t intensityPitch = judgeDuty(target_pitch, pitch);
-		uint32_t intensityRoll = judgeDuty(target_roll, roll);
-		setLedIntensityPitch(intensityPitch);
-		setLedIntensityRoll(intensityRoll);
-}
+//int infiniteLoop() {
+//    //Main program execution ins here.
+//    if (state == PITCH_MONITOR_STATE) {
+//        display(1);
+//    } else if (state == ROLL_MONITOR_STATE) {
+//        display(0);
+//    } else if (state == START_STATE) {
+//        display(8888);
+//    } else if (state == SLEEP_STATE) {
+//        resetDisplay();
+//    } else if (state == ENTER_ROLL_STATE) {
+//        float f=0.0;
+//        sscanf(roll_buf, "%f", &f);
+//        display((int) f);
+//    } else if (state == ENTER_PITCH_STATE) {
+//        float f=0.0;
+//        sscanf(pitch_buf, "%f", &f);
+//        display((int) f);
+//    }
+//		uint32_t intensityPitch = judgeDuty(target_pitch, pitch);
+//		uint32_t intensityRoll = judgeDuty(target_roll, roll);
+//		setLedIntensityPitch(intensityPitch);
+//		setLedIntensityRoll(intensityRoll);
+//}
 /**
   * Main function
   */
@@ -92,6 +94,7 @@ int main (void) {
   initTimer();
 
 	initializeAccelerometer();
+	
   osKernelInitialize();                     /* initialize CMSIS-RTOS          */
 
   HAL_Init();                               /* Initialize the HAL Library     */
@@ -99,8 +102,9 @@ int main (void) {
   SystemClock_Config();                     /* Configure the System Clock     */
 
 	/* User codes goes here*/
-  initializeLED_IO();                       /* Initialize LED GPIO Buttons    */
-  start_Thread_LED();                       /* Create LED thread              */
+//	initializeLED_IO();
+//  start_Threads();                       /* Create LED thread              */
+	start_Threads();
 	/* User codes ends here*/
   
 	osKernelStart();                          /* start thread execution         */
