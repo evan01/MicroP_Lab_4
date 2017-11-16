@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "stm32f4xx_hal.h"
-#include "gpio.h"
-#include "../state_machine.h"
+#include "../Gpio/gpio.h"
+#include "../StateMachine/state_machine.h"
 #include "keypad.h"
 #include "../stm32f4xx_it.h"
 
@@ -11,6 +11,7 @@ int column = 0;
 int row = 0;
 int keypressed = 0;
 int key = 0;
+int keypad_counter = 0;
 
 
 void switchIO(){

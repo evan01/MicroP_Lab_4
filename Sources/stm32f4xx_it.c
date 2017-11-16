@@ -40,9 +40,9 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-int SysTickCount;
+//int SysTickCount;
 int INTERUPTCOUNT;
-int keypad_counter;
+//int keypad_counter;
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
 /******************************************************************************/
@@ -50,24 +50,24 @@ int keypad_counter;
 /**
 * @brief This function handles System tick timer.
 */
-void SysTick_Handler(void)
-{
-  /* USER CODE BEGIN SysTick_IRQn 0 */
+//void SysTick_Handler(void)
+//{
+//  /* USER CODE BEGIN SysTick_IRQn 0 */
 
-  /* USER CODE END SysTick_IRQn 0 */
-  HAL_IncTick();
-  HAL_SYSTICK_IRQHandler();
-//	printf("Systick: %d\n", SysTickCount);
-//	printf("%d\n", SysTickCount);
-	SysTickCount ++;
-	if(SysTickCount == 1000){
-		SysTickCount = 0;
-		keypad_counter++;
-	}
-  /* USER CODE BEGIN SysTick_IRQn 1 */
+//  /* USER CODE END SysTick_IRQn 0 */
+//  HAL_IncTick();
+//  HAL_SYSTICK_IRQHandler();
+////	printf("Systick: %d\n", SysTickCount);
+////	printf("%d\n", SysTickCount);
+//	SysTickCount ++;
+//	if(SysTickCount == 1000){
+//		SysTickCount = 0;
+//		keypad_counter++;
+//	}
+//  /* USER CODE BEGIN SysTick_IRQn 1 */
 
-  /* USER CODE END SysTick_IRQn 1 */
-}
+//  /* USER CODE END SysTick_IRQn 1 */
+//}
 
 /******************************************************************************/
 /* STM32F4xx Peripheral Interrupt Handlers                                    */

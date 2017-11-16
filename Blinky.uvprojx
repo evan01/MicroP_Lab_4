@@ -399,6 +399,16 @@
               <FileType>1</FileType>
               <FilePath>.\Sources\fput_debug.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f4xx_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sources\stm32f4xx_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_it.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\stm32f4xx_it.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -508,6 +518,11 @@
               <FileName>gpio.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Sources\gpio\gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>mxconstants.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\mxconstants.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -913,6 +928,16 @@
               <FileType>1</FileType>
               <FilePath>.\Sources\fput_debug.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f4xx_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sources\stm32f4xx_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_it.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\stm32f4xx_it.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1022,6 +1047,11 @@
               <FileName>gpio.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Sources\gpio\gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>mxconstants.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\mxconstants.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1426,6 +1456,16 @@
               <FileType>1</FileType>
               <FilePath>.\Sources\fput_debug.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32f4xx_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sources\stm32f4xx_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_it.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\stm32f4xx_it.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1535,6 +1575,11 @@
               <FileName>gpio.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Sources\gpio\gpio.h</FilePath>
+            </File>
+            <File>
+              <FileName>mxconstants.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\mxconstants.h</FilePath>
             </File>
           </Files>
         </Group>

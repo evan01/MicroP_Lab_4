@@ -59,13 +59,14 @@ int start_Thread_LED (void) {
 		while(1){
 				osDelay(1000);
 				HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+				printf("%d\n", HAL_GetTick());
 			}
 	}
 	
 	
 	void Thread_LED_2 (void const *argument) {
 		while(1){
-				osDelay(230);
+				osDelay(500);
 				HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
 			}
 	}	
