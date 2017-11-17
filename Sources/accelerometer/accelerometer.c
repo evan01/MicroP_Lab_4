@@ -20,6 +20,7 @@
 #define M_PI 3.14159265358979323846
 #include "../filter/filter.h"
 #include "stdlib.h"
+#include "../Threads.h"
 
 //Global Constants
 float roll = 0.00;
@@ -74,10 +75,16 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 
     //Set global pitch and roll variables.
 //	printf("FILTER---->\t\tX: %3f   Y: %3f   Z: %3f\n\n",f.x,f.y,f.z);
-    pitch = (double)atan2f((-f.y), sqrtf(f.x * f.x + f.z * f.z)) * 180.0 / M_PI;
-    roll = (double)atan2f(f.x, f.z) * 180.0 / M_PI;
-	pitch = (float)round(fabsf(pitch));
+	osSemaphoreWait(roll_sem, osWaitForever);
+	roll = (double)atan2f(f.x, f.z) * 180.0 / M_PI;
 	roll = (float)round(fabsf(roll));
+	osSemaphoreRelease(roll_sem);
+	
+	osSemaphoreWait(pitch_sem, osWaitForever);
+    pitch = (double)atan2f((-f.y), sqrtf(f.x * f.x + f.z * f.z)) * 180.0 / M_PI;
+	pitch = (float)round(fabsf(pitch));
+	osSemaphoreRelease(pitch_sem);
+
     if (counter == 100){
 		HAL_GPIO_TogglePin(GPIOD,GPIO_PIN_13);
         printf("\t\t\t=======PITCH: %3f,ROLL:%3f\n\n",pitch,roll);

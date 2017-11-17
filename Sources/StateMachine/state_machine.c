@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "state_machine.h"
-
-
-
-
+#include "../Threads.h"
 
 
 int target_roll;
@@ -20,6 +17,7 @@ state_e state = START_STATE;
 state_e next_state;
 press_type_e press_type;
 event_e event;
+
 
 /*
 0 -> roll
@@ -147,7 +145,7 @@ int set_state(){
 				next_state = ENTER_ROLL_STATE;
 			case SLEEP_STATE:
 				next_state = SLEEP_STATE;
-				osSignalSet();
+				
 				break;
 			case ENTER_ROLL_STATE:
 				if(event == HASHTAG){
@@ -266,7 +264,10 @@ int set_state(){
 				break;
 		}
 	}
+	osSemaphoreWait(state_sem, osWaitForever);
 	state = next_state;
+	osSemaphoreRelease(state_sem);
+	
 	printf("End State: ");
 	printState(state);
 	return 0;

@@ -19,7 +19,7 @@
 #include "accelerometer/accelerometer.h"
 #include "keypad/keypad.h"
 #include "gpio/gpio.h"
-#include "Threads.h"
+#include "./Threads.h"
 
 
 void Thread_Display(void const *argument);                 // thread function
@@ -34,16 +34,25 @@ osThreadId tid_Thread_LED;                              // thread id
 // Following is different format of creating your threads. This project is based on the older CMSIS version.
 osThreadDef(Thread_Display, osPriorityNormal,1, 0);
 osThreadDef(Thread_LED, osPriorityNormal,1, 0);
-
 osThreadDef( Thread_Keypad, osPriorityHigh,1, 0);
 //GPIO_InitTypeDef 				LED_configuration;
+osSemaphoreId state_sem;
+osSemaphoreId pitch_sem;
+osSemaphoreId roll_sem;
+
+osSemaphoreDef(state_sem);
+osSemaphoreDef(pitch_sem);
+osSemaphoreDef(roll_sem);
 
 /*----------------------------------------------------------------------------
  *      Create the thread within RTOS context
  *---------------------------------------------------------------------------*/
 int start_Threads(void) {
-		osSemaphoreCreate(osSemaphore(state_sem), 1);
-
+//	osSemaphoreDef(state_sem);
+	osSemaphoreCreate(osSemaphore(state_sem), 1);
+	osSemaphoreCreate(osSemaphore(roll_sem), 1);
+	osSemaphoreCreate(osSemaphore(pitch_sem), 1);
+	
     tid_Thread_Display = osThreadCreate(osThread(Thread_Display), NULL);
     tid_Thread_Keypad = osThreadCreate(osThread(Thread_Keypad), NULL);
     tid_Thread_LED = osThreadCreate(osThread(Thread_LED), NULL);
@@ -82,13 +91,15 @@ void Thread_Display(void const *argument) {
 		switch (state) {
             case SLEEP_STATE:
 								
-								setLedIntensityPitch(0);
-								setLedIntensityRoll(0);
+				setLedIntensityPitch(0);
+				setLedIntensityRoll(0);
                 resetDisplay();
-								__GPIOE_CLK_DISABLE();
-								__GPIOH_CLK_DISABLE();
-								__GPIOA_CLK_DISABLE();
-								__GPIOD_CLK_DISABLE();
+				__GPIOE_CLK_DISABLE();
+				__GPIOH_CLK_DISABLE();
+				__GPIOA_CLK_DISABLE();
+				__GPIOD_CLK_DISABLE();
+				osSignalWait(0x1, osWaitForever);
+
                 break;
             case START_STATE:
 //								initTimer();
@@ -101,10 +112,15 @@ void Thread_Display(void const *argument) {
                 displayDigits(8888);
                 break;
             case PITCH_MONITOR_STATE:
+				osSemaphoreWait(pitch_sem, osWaitForever);
                 displayDigits(pitch);
+				osSemaphoreRelease(pitch_sem);
                 break;
             case ROLL_MONITOR_STATE:
+				osSemaphoreWait(roll_sem, osWaitForever);
                 displayDigits(roll);
+				osSemaphoreRelease(roll_sem);
+
                 break;
             case ENTER_PITCH_STATE:
 				sscanf(pitch_buf, "%d", &temp_target_pitch);
@@ -129,10 +145,13 @@ void Thread_Display(void const *argument) {
 void Thread_LED(void const *argument) {
     while (1) {
         osDelay(40);
-				int rollIntensity = judgeDuty(target_roll, roll);
-				int pitchIntensity = judgeDuty(target_pitch, pitch);
-				setLedIntensityPitch(pitchIntensity);
-				setLedIntensityRoll(rollIntensity);
+		setLedIntensityPitch(0);
+		setLedIntensityRoll(0);
+		osSignalWait(0x1, osWaitForever);
+		int rollIntensity = judgeDuty(target_roll, roll);
+		int pitchIntensity = judgeDuty(target_pitch, pitch);
+		setLedIntensityPitch(pitchIntensity);
+		setLedIntensityRoll(rollIntensity);
 
     }
 }
@@ -140,10 +159,14 @@ void Thread_LED(void const *argument) {
 void Thread_Keypad(void const *argument) {
     while (1) {
 			osDelay(20);
-      osSemaphoreWait(state_sem, osWaitForever);
+//      osSemaphoreWait(state_sem, osWaitForever);
 			readInput();
-			
-			osSemaphoreRelease(state_sem);
+			if(state != SLEEP_STATE){
+				osSignalSet(tid_Thread_Display, 0x1);
+				osSignalSet(tid_Thread_LED, 0x1);
+
+			}
+//			osSemaphoreRelease(state_sem);
     }
 }
 
