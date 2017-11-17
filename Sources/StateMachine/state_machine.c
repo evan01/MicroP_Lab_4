@@ -6,6 +6,7 @@
 
 
 
+
 int target_roll;
 char roll_buf[10];
 int roll_pointer = 0;
@@ -146,6 +147,7 @@ int set_state(){
 				next_state = ENTER_ROLL_STATE;
 			case SLEEP_STATE:
 				next_state = SLEEP_STATE;
+				osSignalSet();
 				break;
 			case ENTER_ROLL_STATE:
 				if(event == HASHTAG){

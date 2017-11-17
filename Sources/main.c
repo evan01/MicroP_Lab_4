@@ -19,7 +19,7 @@
 #include <math.h>
 #include "Tim/tim.h"
 #include "keypad/keypad.h"
-#include "Threads.h"
+
 
 #include "stm32f4xx_hal.h"              // Keil::Device:STM32Cube HAL:Common
 #include "cmsis_os.h"                   // ARM::CMSIS:RTOS:Keil RTX
@@ -66,7 +66,6 @@ int main(void) {
     MX_GPIO_Init();
     /* User codes goes here*/
 //	initializeLED_IO();
-		osSemaphoreCreate(osSemaphore(two_slots), 2);
     start_Threads();                       /* Create LED thread              */
     /* User codes ends here*/
 

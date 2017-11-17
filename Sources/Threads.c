@@ -31,34 +31,18 @@ osThreadId tid_Thread_Keypad;                              // thread id
 osThreadId tid_Thread_LED;                              // thread id
 
 
-/*		**** depending on the version of the CMSIS library, you may need to make your threads in different way:   *******
-
-	osThreadDef(Thread_1,Thread_LED, osPriorityNormal, osPriorityNormal, 128);
-	osThreadDef(Thread_2, Thread_LED_2, osPriorityNormal, osPriorityNormal, 128);
-	osThreadDef(Thread_3, Thread_LED_3, osPriorityNormal, osPriorityNormal, 128);
- 
-	tid_Thread_LED_1 = osThreadCreate(osThread(Thread_1), NULL);
-	tid_Thread_LED_2 = osThreadCreate(osThread(Thread_2), NULL);
-	tid_Thread_LED_3 = osThreadCreate(osThread(Thread_3), NULL);
-
-	This is a style when you create a project with CubMx as it uses the newest version
-
-*/
-
 // Following is different format of creating your threads. This project is based on the older CMSIS version.
-osThreadDef(Thread_Display, osPriorityNormal,
-1, 0);
-osThreadDef(Thread_LED, osPriorityNormal,
-1, 0);
+osThreadDef(Thread_Display, osPriorityNormal,1, 0);
+osThreadDef(Thread_LED, osPriorityNormal,1, 0);
 
-osThreadDef( Thread_Keypad, osPriorityNormal,
-1, 0);
+osThreadDef( Thread_Keypad, osPriorityHigh,1, 0);
 //GPIO_InitTypeDef 				LED_configuration;
 
 /*----------------------------------------------------------------------------
  *      Create the thread within RTOS context
  *---------------------------------------------------------------------------*/
 int start_Threads(void) {
+		osSemaphoreCreate(osSemaphore(state_sem), 1);
 
     tid_Thread_Display = osThreadCreate(osThread(Thread_Display), NULL);
     tid_Thread_Keypad = osThreadCreate(osThread(Thread_Keypad), NULL);
@@ -92,8 +76,9 @@ void Thread_Display(void const *argument) {
 
         //displayDigits(8888);
 //				printf("%d\n", HAL_GetTick());
-        int temp_target_pitch = 0;
+    int temp_target_pitch = 0;
 		int temp_target_roll = 0;
+		osSemaphoreWait(state_sem, osWaitForever);
 		switch (state) {
             case SLEEP_STATE:
 								
@@ -130,22 +115,18 @@ void Thread_Display(void const *argument) {
 				displayDigits(temp_target_roll);
                 break;
             case TARGET_PITCH_STATE:
-//				printf("target pitch state\n");
-//                displayDigits(target_pitch);
                 displayDigits(target_pitch);
                 break;
             case TARGET_ROLL_STATE:
-//				printf("target roll state\n");
-//                displayDigits(target_roll);
                 displayDigits(target_roll);
                 break;
         }
+				osSemaphoreRelease(state_sem);
     }
 }
 
 
 void Thread_LED(void const *argument) {
-    int counter = 0;
     while (1) {
         osDelay(40);
 				int rollIntensity = judgeDuty(target_roll, roll);
@@ -158,8 +139,11 @@ void Thread_LED(void const *argument) {
 
 void Thread_Keypad(void const *argument) {
     while (1) {
-		osDelay(20);
-        readInput();
+			osDelay(20);
+      osSemaphoreWait(state_sem, osWaitForever);
+			readInput();
+			
+			osSemaphoreRelease(state_sem);
     }
 }
 
