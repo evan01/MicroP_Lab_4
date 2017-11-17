@@ -128,6 +128,20 @@ int setDisplay(const int *pins){
 
 int displayDigits(int value){
 	static int counter_display = 0;
+	static int limit = 4;
+	if(value >= 1000 && limit != 4){
+		limit = 4;
+		counter_display = 0;
+	}else if(value > 100 && value < 1000 && limit != 3){
+		limit = 3;
+		counter_display = 0;
+	}else if(value > 10 && value < 100 && limit != 2){	
+		limit = 2;
+		counter_display = 0;
+	}else if(value >= 0 && value < 10 && limit != 1){
+		limit = 1;
+		counter_display = 0;
+	}
 	char output[4];
 	int int_output[4];
 	//Convert integer input to 4 element int array
@@ -141,7 +155,8 @@ int displayDigits(int value){
 	//The the panel pins to point to the correct pannel
 	activatePanel(counter_display);
 	counter_display++;
-	if(counter_display == 4){
+	
+	if(counter_display == limit){
 		counter_display = 0;
 	}
 	return 0;

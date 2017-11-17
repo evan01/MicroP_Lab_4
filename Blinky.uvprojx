@@ -414,6 +414,11 @@
               <FileType>1</FileType>
               <FilePath>.\Sources\Threads.c</FilePath>
             </File>
+            <File>
+              <FileName>Threads.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\Threads.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -948,6 +953,11 @@
               <FileType>1</FileType>
               <FilePath>.\Sources\Threads.c</FilePath>
             </File>
+            <File>
+              <FileName>Threads.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\Threads.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1480,6 +1490,11 @@
               <FileName>Threads.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Sources\Threads.c</FilePath>
+            </File>
+            <File>
+              <FileName>Threads.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Sources\Threads.h</FilePath>
             </File>
           </Files>
         </Group>

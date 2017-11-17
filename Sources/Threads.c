@@ -78,44 +78,6 @@ uint32_t judgeDuty(uint32_t target, float current) {
 
 }
 
-int display(int value) {
-    //display the digits
-    if (value == 1) {
-        return displayDigits(pitch);
-    } else if (value == 0) {
-        return displayDigits(roll);
-    } else {
-        //In sleep state
-        return displayDigits(value);
-    }
-}
-
-int infiniteLoop() {
-    //Main program execution ins here.
-    printf("state %d\n", state);
-    if (state == PITCH_MONITOR_STATE) {
-        display(1);
-    } else if (state == ROLL_MONITOR_STATE) {
-        display(0);
-    } else if (state == START_STATE) {
-        display(8888);
-    } else if (state == SLEEP_STATE) {
-    } else if (state == ENTER_ROLL_STATE) {
-        float f = 0.0;
-        sscanf(roll_buf, "%f", &f);
-        display((int) f);
-    } else if (state == ENTER_PITCH_STATE) {
-        float f = 0.0;
-        sscanf(pitch_buf, "%f", &f);
-        display((int) f);
-    }
-    //		uint32_t intensityPitch = judgeDuty(target_pitch, pitch);
-    //		uint32_t intensityRoll = judgeDuty(target_roll, roll);
-    //		setLedIntensityPitch(intensityPitch);
-    //		setLedIntensityRoll(intensityRoll);
-}
-
-
 void Thread_Display(void const *argument) {
     while (1) {
 		 //osDelay(1000);
@@ -128,9 +90,22 @@ void Thread_Display(void const *argument) {
 		int temp_target_roll = 0;
 		switch (state) {
             case SLEEP_STATE:
+								
+								setLedIntensityPitch(0);
+								setLedIntensityRoll(0);
                 resetDisplay();
+//								__GPIOE_CLK_DISABLE();
+//								__GPIOH_CLK_DISABLE();
+//								__GPIOA_CLK_DISABLE();
+//								__GPIOD_CLK_DISABLE();
                 break;
             case START_STATE:
+//								__GPIOE_CLK_ENABLE();
+//								__GPIOC_CLK_ENABLE();
+//								__GPIOH_CLK_ENABLE();
+//								__GPIOA_CLK_ENABLE();
+//								__GPIOB_CLK_ENABLE();
+//								__GPIOD_CLK_ENABLE();
                 displayDigits(8888);
                 break;
             case PITCH_MONITOR_STATE:
@@ -148,12 +123,12 @@ void Thread_Display(void const *argument) {
 				displayDigits(temp_target_roll);
                 break;
             case TARGET_PITCH_STATE:
-				printf("target pitch state\n");
+//				printf("target pitch state\n");
 //                displayDigits(target_pitch);
                 displayDigits(target_pitch);
                 break;
             case TARGET_ROLL_STATE:
-				printf("target roll state\n");
+//				printf("target roll state\n");
 //                displayDigits(target_roll);
                 displayDigits(target_roll);
                 break;
@@ -165,16 +140,12 @@ void Thread_Display(void const *argument) {
 void Thread_LED(void const *argument) {
     int counter = 0;
     while (1) {
-        osDelay(50);
-        if (counter == 1) {
-            setLedIntensityPitch(0);
-            setLedIntensityRoll(200);
-            counter = 0;
-        } else {
-            setLedIntensityPitch(200);
-            setLedIntensityRoll(0);
-            counter = 1;
-        }
+        osDelay(40);
+				int rollIntensity = judgeDuty(target_roll, roll);
+				int pitchIntensity = judgeDuty(target_pitch, pitch);
+				setLedIntensityPitch(pitchIntensity);
+				setLedIntensityRoll(rollIntensity);
+
     }
 }
 

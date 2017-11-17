@@ -125,7 +125,6 @@ int readInput(void){
 	int b = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_5);
 	int c = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
 	if(a == 0 || b == 0 || c == 0){
-		keypressed = 1;
 		if(a == 0){
 			column = 1;
 		}else if(b == 0){
@@ -152,14 +151,16 @@ int readInput(void){
 			row = 4;
 		}
 		key = getPressedKey(column, row);
-		timer_start = HAL_GetTick();
+		if(keypressed == 0){
+				timer_start = HAL_GetTick();
+		}
 		keypressed = 1;
 		resetIO();
 	}else{
 		if(keypressed == 1){
 			timer_end = HAL_GetTick();
-			
-			int duration = (timer_end - timer_start)/1000;
+			int duration;
+			int keypad_counter = (timer_end - timer_start)/1000;
 			if(keypad_counter == 0){
 				duration = 0;
 			}else if(keypad_counter == 1){
@@ -169,8 +170,9 @@ int readInput(void){
 			}else if(keypad_counter >= 3){
 				duration = 3;
 			}
-			
-			printf("key: %d, duration: %d, timer start: %d, timer end: %d\n", key, duration, timer_start, timer_end);
+						timer_end = HAL_GetTick();
+
+			printf("key: %d, duration: %d, timer start: %d, timer end: %d, diff: %d\n", key, duration, timer_start, timer_end, (timer_end-timer_start));
 			updateState(key, duration);
 			keypressed = 0;
 			keypad_counter = 0;

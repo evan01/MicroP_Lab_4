@@ -196,46 +196,69 @@ int set_state(){
 				}
 				break;
 			case PITCH_MONITOR_STATE:
-				if(event == NUMBER_1){
-					next_state = PITCH_MONITOR_STATE;
-				}else if(event == NUMBER_2){
-					next_state = ROLL_MONITOR_STATE;
-				}else if(event == HASHTAG){
+//				if(event == NUMBER_1){
+//					next_state = PITCH_MONITOR_STATE;
+//				}else if(event == NUMBER_2){
+//					next_state = ROLL_MONITOR_STATE;
+//				}else if(event == HASHTAG){
+//					next_state = TARGET_PITCH_STATE;
+//				}else{
+//					next_state = PITCH_MONITOR_STATE;
+//				}
+			
+				if(event == HASHTAG){
 					next_state = TARGET_PITCH_STATE;
-				}else{
+				}	else{
 					next_state = PITCH_MONITOR_STATE;
 				}
 				break;
 			case ROLL_MONITOR_STATE:
-				if(event == NUMBER_1){
-					next_state = PITCH_MONITOR_STATE;
-				}else if(event == NUMBER_2){
-					next_state = ROLL_MONITOR_STATE;
-				}else if(event == HASHTAG){
+//				if(event == NUMBER_1){
+//					next_state = PITCH_MONITOR_STATE;
+//				}else if(event == NUMBER_2){
+//					next_state = ROLL_MONITOR_STATE;
+//				}else if(event == HASHTAG){
+//					next_state = TARGET_ROLL_STATE;
+//				}else{
+//					next_state = ROLL_MONITOR_STATE;
+//				}
+				if(event == HASHTAG){
 					next_state = TARGET_ROLL_STATE;
-				}else{
+				}	else{
 					next_state = ROLL_MONITOR_STATE;
 				}
 				break;
 			case TARGET_PITCH_STATE:
-				if(event == NUMBER_1){
-					next_state = TARGET_PITCH_STATE;
-				}else if(event == NUMBER_2){
+//				if(event == NUMBER_1){
+//					next_state = TARGET_PITCH_STATE;
+//				}else if(event == NUMBER_2){
+//					next_state = ROLL_MONITOR_STATE;
+//				}else if(event == HASHTAG){
+//					next_state = PITCH_MONITOR_STATE;
+//				}else{
+//					next_state = TARGET_PITCH_STATE;
+//				}
+			
+				if(event == HASHTAG){
 					next_state = ROLL_MONITOR_STATE;
-				}else if(event == HASHTAG){
-					next_state = PITCH_MONITOR_STATE;
-				}else{
+				}	else{
 					next_state = TARGET_PITCH_STATE;
 				}
 				break;
 			case TARGET_ROLL_STATE:
-				if(event == NUMBER_1){
+//				if(event == NUMBER_1){
+//					next_state = PITCH_MONITOR_STATE;
+//				}else if(event == NUMBER_2){
+//					next_state = TARGET_ROLL_STATE;
+//				}else if(event == HASHTAG){
+//					next_state = ROLL_MONITOR_STATE;
+//				}else{
+//					next_state = TARGET_ROLL_STATE;
+//				}
+			
+				if(event == HASHTAG){
 					next_state = PITCH_MONITOR_STATE;
-				}else if(event == NUMBER_2){
-					next_state = TARGET_ROLL_STATE;
-				}else if(event == HASHTAG){
-					next_state = ROLL_MONITOR_STATE;
-				}else{
+				}	else{
 					next_state = TARGET_ROLL_STATE;
 				}
 				break;
