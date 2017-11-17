@@ -18,6 +18,8 @@
 #include <math.h>
 #include "accelerometer/accelerometer.h"
 #include "keypad/keypad.h"
+#include "gpio/gpio.h"
+#include "Threads.h"
 
 
 void Thread_Display(void const *argument);                 // thread function
@@ -72,7 +74,11 @@ int start_Threads(void) {
 *      Thread  'LED_Thread': Toggles LED
 *---------------------------------------------------------------------------*/
 uint32_t judgeDuty(uint32_t target, float current) {
-    float rval;
+		if((fabsf((float) target - (float) current) < 3)){
+			return 0;
+		}
+	
+		float rval;
     rval = 200.0 * ((fabsf((float) target - (float) current)) / 180.0);
     return (uint32_t) rval;
 
@@ -94,18 +100,19 @@ void Thread_Display(void const *argument) {
 								setLedIntensityPitch(0);
 								setLedIntensityRoll(0);
                 resetDisplay();
-//								__GPIOE_CLK_DISABLE();
-//								__GPIOH_CLK_DISABLE();
-//								__GPIOA_CLK_DISABLE();
-//								__GPIOD_CLK_DISABLE();
+								__GPIOE_CLK_DISABLE();
+								__GPIOH_CLK_DISABLE();
+								__GPIOA_CLK_DISABLE();
+								__GPIOD_CLK_DISABLE();
                 break;
             case START_STATE:
-//								__GPIOE_CLK_ENABLE();
-//								__GPIOC_CLK_ENABLE();
-//								__GPIOH_CLK_ENABLE();
-//								__GPIOA_CLK_ENABLE();
-//								__GPIOB_CLK_ENABLE();
-//								__GPIOD_CLK_ENABLE();
+//								initTimer();
+//								initializeAccelerometer();
+//								MX_GPIO_Init();
+								__GPIOE_CLK_ENABLE();
+								__GPIOH_CLK_ENABLE();
+								__GPIOA_CLK_ENABLE();
+								__GPIOD_CLK_ENABLE();
                 displayDigits(8888);
                 break;
             case PITCH_MONITOR_STATE:
